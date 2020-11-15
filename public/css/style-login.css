@@ -5,17 +5,12 @@
 }
 
 body{
-	/*background: rgb(60,200,233);
-	background: linear-gradient(90deg, rgba(60,200,233,1) 29%, rgba(16,23,142,0.981127485173757) 78%);*/
-	background-color: #3b9fe2;
+	background-color: rgba(0,0,0,0.1);
 }
 
 #login_user{
 	width: 100%;
 	height: 100%;
-	/*background: rgb(60,200,233);
-	background: linear-gradient(90deg, rgba(60,200,233,1) 29%, rgba(16,23,142,0.981127485173757) 78%);
-	*/
 }
 
 .form_box{
@@ -24,21 +19,19 @@ body{
 	position: relative;
 	margin: 10% auto;
 	padding: 5px;
-	box-shadow: 0 0 10px #000000;
-	background: #ffffff;
+	background: #fff;
 	overflow: hidden;
+	border-top: 6px solid #3b9fe2;
+	border-radius: 3px;
+	box-shadow: 1px 1px 6px 1px rgba(0,0,0,0.3);
 }
 
 .form_box h1{
-	position: relative;
 	text-align: center;
-	height:50px;
 	padding-top: 15px;
-	color:#ffffff;
-	/*background: linear-gradient(90deg, rgba(60,200,233,1) 29%, rgba(16,23,142,0.981127485173757) 78%);*/
-	background-color: #3b9fe2;
-	border-radius: 30px;
-
+	color: #4d4d4d;
+	font-size: 24px;
+	text-transform: uppercase;
 }
 
 .p_style{
@@ -46,16 +39,16 @@ body{
 	text-align: center;
 	bottom:30px;
 	left:60px;
-	
-
+	color: #4d4d4d;
 }
 
 .btn_box{
 	position: relative;
 	width: 220px;
 	margin: 35px auto;
-	box-shadow: 0 0 20px 10px #3b9fe2;
-	border-radius: 30px;
+	/* box-shadow: 0 0 20px 10px #3b9fe2; */
+	box-shadow: 0px 1px 4px 1px rgba(0,0,0,0.15);
+	border-radius: 9px;
 	color:#ffffff;
 
 }
@@ -79,10 +72,11 @@ body{
 	height: 100%;
 	/*background: linear-gradient(90deg, rgba(60,200,233,1) 29%, rgba(16,23,142,0.981127485173757) 78%);*/
 	background-color: #3b9fe2;
-	border-radius: 30px;
+	border-radius: 9px;
 	transition: 0.5s;
 	color:white;
 }
+
 
 #set_to_black{
 	color:black;
@@ -117,21 +111,25 @@ body{
 
 .btn_submit{
 	width: 85%;
-	padding: 10px 30px;
+	padding: 10px 15px;
 	cursor: pointer;
 	display: block;
 	margin: auto;
-	/*background: linear-gradient(90deg, rgba(60,200,233,1) 29%, rgba(16,23,142,0.981127485173757) 78%);*/
 	background-color: #3b9fe2;
 	border:0;
 	outline: none;
-	border-radius: 30px;
+	border-radius: 15px;
 	color:white;
+	font-size: 22px;
+	box-shadow: 0px 2px 8px -1px rgba(0,0,0,0.3);
 }
-
+.btn_submit:hover {
+	background-color: #4397cf;
+	transition: .3s;
+}
 .check_box{
 	margin:30px 10px 30px 0;
-
+	margin-bottom: 3em;
 }
 span{
 	position: absolute;
