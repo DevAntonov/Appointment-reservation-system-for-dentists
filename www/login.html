@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/style-login.css">
+		<title>Login</title>
+	</head>
+	<body>
+		<main>
+			<section id="login_user">
+				<div class="form_box">
+					<h1>Log In</h1>
+					<div class="btn_box">
+						<div id="btn_tgl"></div>
+						<button type="button" id="set_to_black_js"class="toggle_forms" onclick="dentist_login_f()">Dentist</button>
+						<button type="button" id="set_to_black" class="toggle_forms" onclick="patient_login_f()">Patient</button>
+					</div>
+					<form id="login_dentist" class="input_credentials">
+						<input type="text" class="input_field" placeholder="Enter your email" required="">
+						<input type="password" class="input_field" placeholder="Enter your password" required="">
+						<input type="checkbox" class="check_box"><span>Remember password</span>
+						<button type="submit" class="btn_submit">Log In</button>
+						<!--<p>You dont have a Dentist account? Register here</p>-->
+					</form>
+					<form id="login_patient" class="input_credentials">
+						<input type="text" class="input_field" placeholder="Enter your email" required="">
+						<input type="password" class="input_field" placeholder="Enter your password" required="">
+						<input type="checkbox" class="check_box"><span>Remember password</span>
+						<button type="submit" class="btn_submit">Log In</button>
+						<!--<p>You dont have a Patient account? Register <a href="register.html">here</a></p>-->
+					</form>
+					<p class="p_style">Don't have an account? Register <a href="register.html">here</a></p>
+				</div>
+			</section>
+
+		</main>	
+		<script src="js/login_script.js"></script>
+	</body>
+
+</html>

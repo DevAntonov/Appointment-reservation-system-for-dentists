@@ -1,0 +1,155 @@
+html {
+	scroll-behavior: smooth;
+}
+
+body{
+	padding: 0px;
+	margin: 0px;
+	width: 100%;
+	background-color: #ffffff;
+	font-family: Tahoma, Geneva, sans-serif;
+}
+
+#header{
+	width: 100%;
+	position: fixed;
+	z-index: 4;
+	background-color: #ffffff;
+	opacity:0.9;
+	overflow-x: hidden;
+	border-bottom: 2px solid #3b9fe2;
+}
+
+#logo_img{
+	width: 80px;
+	padding-left: 50px;
+}
+
+.navigation_bar{
+	width: 100%;
+	height: 50px;
+	position: absolute;
+	top: 14px;
+	right: 20px;
+}
+
+.nav_links{
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+	float: right;
+
+}
+
+.navigation_bar li{
+	display: inline;
+}
+
+.navigation_bar a{
+	float: left;
+	color: #3b9fe2;
+	text-align: center;
+	text-decoration: none;
+	padding: 16px 22px;
+	font-size: 1.2em;
+}
+
+.navigation_bar a:hover{
+	/*border-radius: 25px;
+	/*border-right: 1px solid #3b9fe2; #55b0ed
+	border-left: 1px solid #3b9fe2;*/
+	background-color: #3b9fe2;
+	color:#ffffff;
+	transition:0.5s;
+}
+
+#landing_page{
+	position: relative;
+}
+
+.crop_img{
+	max-height: 730px;
+	overflow: hidden;
+}
+
+#landing_img{
+	max-width: 100%;
+	height: auto;
+	/*filter: brightness(100%);*/
+}
+
+#landing_page_txt_box{
+	display: block;
+	position: absolute;
+	width: 35%;
+	color: #3b9fe2;
+	top: 40%;
+	left: 49%;
+	transform: translate(-50%, -50%);
+	text-align: center;
+	background-color: #ffffff;
+	opacity: 0.8; 
+	font-family: "Lucida Console", Monaco, monospace;
+	font-size:1.5vw;
+}
+
+.btn_reg{
+	display:block;
+	position:absolute;
+	width:15%;
+	top:55%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: #3b9fe2;
+	text-align: center;
+	font-size: 1.2em;
+	border-radius:0.24em;
+	padding:1em 2.6em;
+	border:1px solid #ffffff;
+}
+
+.btn_reg:hover{
+	color:#ffffff;
+	background-color: #3b9fe2;
+	transition: 0.4s;
+	border:1px solid #3b9fe3;
+}
+
+#about{
+	position: relative;
+	display: block;
+	overflow: hidden;
+}
+
+#about_service{
+	position: absolute;
+	max-width: 45%;
+	min-height: 100%;
+	z-index: 2;
+	font-size: 1.6vw;
+	padding-top: 60px;
+	padding-left: 30px;
+	padding-right: 30px;
+	background-color: black;
+	color: white;
+	opacity: 0.8;
+	overflow: hidden;
+}
+
+.parallax_effect{
+	background: url('../img/landing/dentist.jpg');
+  	min-height: 600px;
+  	background-attachment: fixed;
+  	background-position: center;
+  	background-repeat: no-repeat; 
+	background-size: cover;
+}
+
+#footer{
+	position: relative;
+	width: 100%;
+	height: 100px;
+	padding-top:50px;
+	border-top: 2px solid #3b9fe2;
+	text-align: center;
+}
