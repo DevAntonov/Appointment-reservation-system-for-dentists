@@ -157,13 +157,3 @@ a:hover{
 a:active {
   color: red;
 }
-
-.p_error{
-	position: absolute;
-	display: block;
-	margin-top:240px;
-	left:10%;
-	color:red;
-}
-
-
