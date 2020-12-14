@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="css/style-forms.css">
+		<title>Login</title>
+	</head>
+	<body>
+		<main>
+			<section id="wrap_form">
+				<div class="form_box">
+					<h1>Login</h1>
+					<div class="btn_box">
+						<div id="btn_tgl"></div>
+						<button type="button" id="btn_change_color_dentist"class="toggle_forms" onclick="slideToDentist()">
+						Dentist
+						</button>
+						<button type="button" id="btn_change_color_patient" class="toggle_forms" onclick="slideToPatient()">
+						Patient
+						</button>
+					</div>
+					<form id="dentist_form" class="input_credentials">
+						<input type="text" name="email" class="input_field" placeholder="Email" required>
+						<input type="password" name="pwd" class="input_field" placeholder="Password" required>
+						<!--<label for="rmbPassword" style="color: #4d4d4d">
+							<input type="checkbox" class="check_box" id="rmbPassword">
+							Remeber me?
+						</label> -->
+						<button type="submit" name="submit" class="btn_submit">Log In</button>
+					</form>
+					<form id="patient_form" class="input_credentials">
+						<input type="text" name="email" class="input_field" placeholder="Email" required>
+						<input type="password" name="pwd" class="input_field" placeholder="Password" required>
+						<!--<label for="rmbPassword" style="color: #4d4d4d">
+							<input type="checkbox" class="check_box" id="rmbPassword">
+							Remeber me?
+						</label> -->
+						<button type="submit" name="submit" class="btn_submit">Log In</button>
+					</form>
+					<p class="p_style">Don't have an account? Register <a href="registerform.html">here</a></p>
+				</div>
+			</section>
+
+		</main>	
+		<script src="js/forms_script.js"></script>
+	</body>
+
+</html>

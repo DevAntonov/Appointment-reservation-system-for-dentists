@@ -1,0 +1,24 @@
+/* Background animation */
+
+:root{
+	--gradient: linear-gradient(
+		60deg,
+		#0384fc,
+		#0356fc,
+		#7a1d99,
+		#770f96,
+		#6c1278, 
+		#2259c7,
+		#076ef5,
+		#0348a3,
+		#1d2199,
+		#9b08c7,
+		#7f05a3,
+		#5f027a
+		);
+}
+
+@keyframes bg-anim{
+	0%{background-position: left }
+	100%{background-position: right }
+}
