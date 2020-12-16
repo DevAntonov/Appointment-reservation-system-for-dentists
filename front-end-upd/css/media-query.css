@@ -1,1 +1,27 @@
-/* mquery*/
+/* <<about>> text re-sizing in index page  */
+@media only screen and (max-width: 762px) {
+  #about_service{
+    font-size: 2.5vw;
+  }
+}
+
+@media only screen and (max-width: 440px) {
+  #about_service{
+    font-size: 3.5vw;
+  }
+}
+
+/* admin form */
+@media only screen and (max-width: 1024px) {
+  .admin_form {
+    width: 70%;
+    margin: 15% auto;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .admin_form {
+    width: 95%;
+    margin: 50% auto;
+  }
+}

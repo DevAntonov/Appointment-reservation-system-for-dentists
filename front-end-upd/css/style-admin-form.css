@@ -1,0 +1,52 @@
+
+
+body{
+	background-color: rgba(0,0,0,0.1);
+}
+
+.admin_form{
+  width: 500px;
+  height: 300px;
+  position: relative;
+  margin: 15% auto;
+  padding: 5px;
+  background: #fff;
+  overflow: hidden;
+  border-radius: 3px;
+  box-shadow: 1px 1px 6px 1px rgba(0,0,0,0.3);
+}
+
+h1{
+  text-align: center;
+  padding-top: 15px;
+  color: #4d4d4d;
+  font-size: 20px;
+}
+
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+	background-color: #3b9fe2;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 5px;
+}
+
+button:hover {
+  opacity: 0.5;
+}
+
+.container {
+  padding: 10px;
+}
