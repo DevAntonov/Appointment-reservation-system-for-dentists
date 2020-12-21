@@ -6,6 +6,6 @@ use Src\Utils\DBConnector;
 $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
 $dotenv->load();
 
-$conn = (new DBConnector())->getConnection();
+// TODO: Make class
+$router = initRouterRoutes();
 
-$routeDefiner = defineRoutes();

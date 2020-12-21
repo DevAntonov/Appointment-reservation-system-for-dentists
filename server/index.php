@@ -12,27 +12,10 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $httpMethod = $_SERVER['REQUEST_METHOD'];
 
-echo $httpMethod."\n";
-echo $uri."\n";
-$routeResult = $routeDefiner->dispatch($httpMethod, $uri);
-var_dump($routeResult);
+$routeResult = $router->dispatch($httpMethod, $uri);
 
-// $routeInfo = $dispatcher->dispatch($httpMethod, $uri);
+$handler = $routeResult[0];
+$params = $routeResult[1];
 
-// switch ($routeInfo[0]) {
-//     case FastRoute\Dispatcher::NOT_FOUND:
-//         // ... 404 Not Found
-//         break;
-//     case FastRoute\Dispatcher::METHOD_NOT_ALLOWED:
-//         $allowedMethods = $routeInfo[1];
-//         // ... 405 Method Not Allowed
-//         break;
-//     case FastRoute\Dispatcher::FOUND:
-//         $handler = $routeInfo[1];
-//         $vars = $routeInfo[2];
-//         var_dump($routeInfo);
-//         call_user_func($handler, $vars);
-//         // ... call $handler with $vars
-//         break;
-// }
+$handler($params);
 
