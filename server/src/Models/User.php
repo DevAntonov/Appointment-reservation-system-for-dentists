@@ -4,10 +4,25 @@ namespace Src\Models;
 use Src\Utils\DBConnector;
 
 class User {
-    private $dbConn = null;
 
-    public function __construct($dbConn) {
-        $this->dbConn = $dbConn;
+    private $name;
+    private $email;
+    private $password;
+    
+    public function __construct($name,$email, $password) {
+        $this->name = $name;
+        $this->email = $email;
+        $this->password = $password;
+    }
+
+    public function save() {
+        $conn = DBConnector::getInstance()->getConnection();
+        $hashedPassword = password_hash($this->password, PASSWORD_BCRYPT);
+
+        $query = $conn->prepare('insert into patients(email, name, password) values(:email,:name,:password)');
+        $query->execute(["email" => $this->email, "name" => $this->name, "password" => $hashedPassword]);
+
+        return ["name" => $this->name, "email" => $this->email];
     }
 
     public function getAll() {
@@ -29,4 +44,5 @@ class User {
         $query->execute(["id" => $id]);
         return $query->fetch(\PDO::FETCH_ASSOC);
     }
+
 }

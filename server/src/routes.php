@@ -16,5 +16,10 @@ function initRouterRoutes() {
         UserController::getById($data['userid']);
     });
 
+    $router->post('/apiv1/users', function() {
+        $user = json_decode(file_get_contents('php://input'), true)['user'];
+        UserController::create($user);
+    });
+
     return $router;
 }
