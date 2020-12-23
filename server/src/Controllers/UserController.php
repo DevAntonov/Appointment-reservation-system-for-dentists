@@ -1,13 +1,12 @@
 <?php
 namespace Src\Controllers;
 use Src\Models\User;
+use Src\Utils\Http\Response;
 
 class UserController {
     public static function getAll() {
         $users = User::all();
-        header('Content-Type: application/json');
-        http_response_code(200);
-        echo json_encode([
+        Response::send([
             "status" => 'success',
             "users" => $users
         ]);
@@ -15,9 +14,15 @@ class UserController {
 
     public static function getById($id) {
         $user = User::getById($id);
-        header('Content-Type: application/json');
-        http_response_code(200);
-        echo json_encode([
+
+        if (!$user) {
+            return Response::send([
+                "status" => 'error',
+                "errormsg" => 'User not found'
+            ], 404);
+        }
+
+        Response::send([
             "status" => 'success',
             "user" => $user
         ]);
@@ -25,9 +30,7 @@ class UserController {
 
     public static function create($user) {
         $user = (new User($user['name'], $user['email'], $user['password']))->save();
-        header('Content-Type: application/json');
-        http_response_code(200);
-        echo json_encode([
+        Response::send([
             "status" => 'success',
             "user" => $user
         ]);
