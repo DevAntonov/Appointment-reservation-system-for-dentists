@@ -1,7 +1,7 @@
 <?php
 namespace Src\Controllers;
 use Src\Models\User;
-use Src\Utils\Http\Response;
+use Src\Utils\Http\{Request, Response};
 
 class UserController {
     public static function getAll() {
@@ -28,8 +28,10 @@ class UserController {
         ]);
     }
 
-    public static function create($user) {
+    public static function create() {
+        $user = Request::get('user');
         $user = (new User($user['name'], $user['email'], $user['password']))->save();
+
         Response::send([
             "status" => 'success',
             "user" => $user
