@@ -6,3 +6,17 @@ composer.phar
 **/vendor
 
 server/.env
+
+app/node_modules
+app/dist
+
+# local env files
+app/.env.local
+app/.env.*.local
+
+# Log files
+app/npm-debug.log*
+app/yarn-debug.log*
+app/yarn-error.log*
+app/pnpm-debug.log*
+
