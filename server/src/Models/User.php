@@ -45,4 +45,16 @@ class User {
         return $query->fetch(\PDO::FETCH_ASSOC);
     }
 
+    public static function authenticateViaEmail($email, $password) {
+        $conn = DBConnector::getInstance()->getConnection();
+        $query = $conn->prepare('select id,email,password from patients where email=?');
+        $query->execute([$email]);
+        $user = $query->fetch(\PDO::FETCH_ASSOC);
+
+        // TODO: Throw error instead of returning array!
+        if (password_verify($password, $user['password'])) {
+            return ["id" => $user['id'], "email" => $user['email']];
+        }
+        return [];
+    }
 }

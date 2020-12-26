@@ -1,5 +1,6 @@
 <template>
   <div class="container">
+    <div class="row" v-if="error">Error: {{error}}</div>
     <div class="row">
       <section id="wrap_form">
         <div class="form_box">
@@ -25,14 +26,14 @@
               type="text"
               class="input_field"
               placeholder="Email"
-              :name="user.name"
+              v-model="user.email"
               required
             />
             <input
               type="password"
               class="input_field"
               placeholder="Password"
-              :password="user.password"
+              v-model="user.password"
               required
             />
             <button type="submit" class="btn_submit" @click="login">
@@ -49,12 +50,14 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
+      error: '',
       user: {
         type: 'patient',
-        name: '',
         email: '',
         password: '',
       },
@@ -65,8 +68,30 @@ export default {
       this.user.type = type;
     },
     login() {
-      // eslint-ignore
+      // eslint-disable-next-line
       console.log(this.user);
+
+      axios({
+        method: 'POST',
+        headers: { 'Content-Type': 'multipart/form-data' },
+        url: 'http://172.16.1.147:8000/api/v1/users/authenticate',
+        data: this.user,
+      })
+        .then((response) => {
+          // eslint-disable-next-line
+          console.log(response.data);
+          const { token } = response.data;
+          document.cookie = `_token=${token}`;
+        })
+        .catch((error) => {
+          // eslint-disable-next-line
+          console.error(error);
+          if (error.response) {
+          // eslint-disable-next-line
+            console.log(error.response.data);
+            this.error = error.response.data.errormsg;
+          }
+        });
     },
   },
 };
