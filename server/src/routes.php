@@ -8,15 +8,15 @@ use Src\Controllers\UserController;
 function initRouterRoutes() {
     $router = new RestRoute\Router();
 
-    $router->addRoute('GET', '/apiv1/users', function() {
+    $router->get('/api/v1/users', function() {
         UserController::getAll();
     });
 
-    $router->get('/users/{userid}', function($data) {
+    $router->get('/api/v1/users/{userid}', function($data) {
         UserController::getById($data['userid']);
     });
 
-    $router->post('/apiv1/users', function() {
+    $router->post('/api/v1/users', function() {
         UserController::create();
     });
 
