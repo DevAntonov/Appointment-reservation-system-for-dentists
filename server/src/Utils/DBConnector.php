@@ -20,7 +20,7 @@ class DBConnector {
         }
     }
 
-    public function getInstance() {
+    public static function getInstance() {
         if (!self::$instance) {
             self::$instance = new DBConnector();
         }
