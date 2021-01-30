@@ -2,27 +2,37 @@
 namespace Src\Models;
 
 use Src\Utils\DBConnector;
+use Src\Exceptions\UserException;
 
 class User {
-
+    private $type;
     private $name;
     private $email;
     private $password;
     
-    public function __construct($name,$email, $password) {
+    public function __construct($type, $name, $email, $password) {
+        $this->type = $type;
         $this->name = $name;
         $this->email = $email;
         $this->password = $password;
     }
 
-    public function save() {
+    public function register() {
         $conn = DBConnector::getInstance()->getConnection();
-        $hashedPassword = password_hash($this->password, PASSWORD_BCRYPT);
+        $tblname = $this->type . 's';
+        $stm = 'select email from '.$tblname.' where email=:email';
+        $findUser = $conn->prepare($stm);
 
-        $query = $conn->prepare('insert into patients(email, name, password) values(:email,:name,:password)');
-        $query->execute(["email" => $this->email, "name" => $this->name, "password" => $hashedPassword]);
+        $findUser->execute([":email" => $this->email]);
 
-        return ["name" => $this->name, "email" => $this->email];
+        if (count($findUser->fetchAll()) !== 0) {
+            throw new UserException("User already registerd with this email!");
+        }
+
+        $createStm = 'insert into '.$tblname.'(name, email, password) values(?,?,?)';
+        $password = password_hash($this->password, PASSWORD_BCRYPT);
+        $create = $conn->prepare($createStm);
+        $create->execute([$this->name, $this->email, $password]);
     }
 
     public function getAll() {

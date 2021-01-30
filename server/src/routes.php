@@ -9,7 +9,7 @@ function initRouterRoutes() {
     $router = new RestRoute\Router();
 
     $router->post('/api/v1/users', function() {
-        UserController::create();
+        UserController::register();
     });
 
     $router->post('/api/v1/users/authenticate', function() {

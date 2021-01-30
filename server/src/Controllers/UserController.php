@@ -1,6 +1,7 @@
 <?php
 namespace Src\Controllers;
 use Src\Models\User;
+use Src\Exceptions;
 use Src\Utils\Http\{Request, Response};
 use \Firebase\JWT\JWT;
 
@@ -29,13 +30,35 @@ class UserController {
         ]);
     }
 
-    public static function create() {
-        $user = Request::get();
-        $user = (new User($user['user']['name'], $user['user']['email'], $user['user']['password']))->save();
+    public static function register() {
+        $data = Request::get();
+        file_put_contents('php://stderr', print_r($data, TRUE));
+        
+        $userData = $data["user"];
+        $userType = $userData["type"];
+        
+        if ($userType !== "dentist" && $userType !== "patient") {
+            return Response::send([
+                "status" => 'error',
+                "message" => 'Invalid user type! User must be dentist or patient.'
+            ]);
+        }
+
+        $user = new User($userType, $userData["name"], $userData["email"], $userData["password"]);
+
+        try {
+            $user->register();
+        } catch (Exceptions\UserException $exp) {
+            echo "Error";
+            return Response::send([
+                "status" => 'error',
+                "message" => $exp->getMessage()
+            ], 500);
+        }
 
         Response::send([
             "status" => 'success',
-            "user" => $user
+            "message" => 'User registered'
         ]);
     }
 
