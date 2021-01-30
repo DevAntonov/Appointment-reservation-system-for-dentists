@@ -21,7 +21,7 @@
             Dentist
             </div>
           </div>
-          <form id="dentist_form" class="input_credentials" @sumbit-prevent="login">
+          <form id="dentist_form" class="input_credentials" @submit-prevent="login">
             <input
               type="text"
               class="input_field"
@@ -51,7 +51,7 @@
 
 <script>
 import axios from 'axios';
-
+/* eslint-disable  no-unreachable */
 export default {
   data() {
     return {
@@ -69,27 +69,24 @@ export default {
     },
     login() {
       // eslint-disable-next-line
-      console.log(this.user);
-
       axios({
         method: 'POST',
-        headers: { 'Content-Type': 'multipart/form-data' },
-        url: 'http://172.16.1.147:8000/api/v1/users/authenticate',
-        data: this.user,
+        headers: { 'Content-Type': 'application/json' },
+        url: '/api/v1/users/authenticate',
+        data: { user: this.user },
       })
         .then((response) => {
           // eslint-disable-next-line
           console.log(response.data);
           const { token } = response.data;
           document.cookie = `_token=${token}`;
-        })
-        .catch((error) => {
+        }, (error) => {
           // eslint-disable-next-line
           console.error(error);
           if (error.response) {
-          // eslint-disable-next-line
+            // eslint-disable-next-line
             console.log(error.response.data);
-            this.error = error.response.data.errormsg;
+            this.error = error.response.data.message;
           }
         });
     },

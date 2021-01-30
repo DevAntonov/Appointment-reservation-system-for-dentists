@@ -4,6 +4,7 @@ use Src\Models\User;
 use Src\Exceptions;
 use Src\Utils\Http\{Request, Response};
 use \Firebase\JWT\JWT;
+use Src\Exceptions\UserException;
 
 class UserController {
     public static function getAll() {
@@ -64,18 +65,17 @@ class UserController {
 
     public static function authenticate() {
         $req = Request::get();
-        $email = $req['email'];
-        $password = $req['password'];
+        $userData = $req['user'];
 
-        // TODO: Throw and catch exception
-        $user = User::authenticateViaEmail($email, $password);
-        if (!$user) {
+        try {
+            $user = User::authenticate($userData['type'], $userData['email'], $userData['password']);
+        } catch (UserException $e) {
             return Response::send([
                 "status" => 'error',
-                "errormsg" => 'Invalid email or password'
+                "message" => $e->getMessage()
             ], 400);
         }
-
+        
         // Save token with id and email payload
         $payload = array(
            "id" => $user['id'],

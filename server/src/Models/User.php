@@ -35,6 +35,26 @@ class User {
         $create->execute([$this->name, $this->email, $password]);
     }
 
+    public static function authenticate($type, $email, $password) {
+        $conn = DBConnector::getInstance()->getConnection();
+        $stmt = 'select id, email, password from '.($type.'s'). ' where email = ?';
+
+        $query = $conn->prepare($stmt);
+        $query->execute([$email]);
+        
+        $user = $query->fetch(\PDO::FETCH_ASSOC);
+
+        if (!$user) {
+            throw new UserException("No user was found with that email!");
+        }
+
+        if (!password_verify($password, $user['password'])) {
+            throw new UserException('Invlaid email or password');
+        }
+
+        return ["id" => $user['id'], "email" => $user['email']];
+    }
+
     public function getAll() {
         $query = $this->dbConn->prepare("select * from patients");
         $query->execute();
@@ -53,18 +73,5 @@ class User {
         $query = $conn->prepare('select id,name,email from patients where id=:id');
         $query->execute(["id" => $id]);
         return $query->fetch(\PDO::FETCH_ASSOC);
-    }
-
-    public static function authenticateViaEmail($email, $password) {
-        $conn = DBConnector::getInstance()->getConnection();
-        $query = $conn->prepare('select id,email,password from patients where email=?');
-        $query->execute([$email]);
-        $user = $query->fetch(\PDO::FETCH_ASSOC);
-
-        // TODO: Throw error instead of returning array!
-        if (password_verify($password, $user['password'])) {
-            return ["id" => $user['id'], "email" => $user['email']];
-        }
-        return [];
     }
 }
