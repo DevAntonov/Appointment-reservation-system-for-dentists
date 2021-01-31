@@ -42,7 +42,6 @@ class UserController {
         try {
             $user->register();
         } catch (Exceptions\UserException $exp) {
-            echo "Error";
             return Response::send([
                 "status" => 'error',
                 "message" => $exp->getMessage()
