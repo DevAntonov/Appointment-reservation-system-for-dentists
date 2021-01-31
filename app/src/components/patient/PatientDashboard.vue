@@ -2,9 +2,7 @@
   <div>
     Dashboard
     <div>{{error}}</div>
-    <div class="dentist-cards-wrapper">
-      <dentist-card v-for="dentist in dentists" v-bind:key="dentist.id" v-bind:dentist="dentist" />
-    </div>
+    <dentist-card v-for="dentist in dentists" v-bind:key="dentist.id" v-bind:dentist="dentist" />
   </div>
 </template>
 
