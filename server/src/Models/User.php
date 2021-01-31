@@ -54,13 +54,7 @@ class User {
 
         return ["id" => $user['id'], "email" => $user['email']];
     }
-
-    public function getAll() {
-        $query = $this->dbConn->prepare("select * from patients");
-        $query->execute();
-        return $query->fetchAll(\PDO::FETCH_ASSOC);
-    }
-
+    
     public static function all() {
         $db = DBConnector::getInstance()->getConnection();
         $query = $db->prepare("select id,email,name from patients");

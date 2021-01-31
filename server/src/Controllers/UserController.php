@@ -7,14 +7,6 @@ use \Firebase\JWT\JWT;
 use Src\Exceptions\UserException;
 
 class UserController {
-    public static function getAll() {
-        $users = User::all();
-        Response::send([
-            "status" => 'success',
-            "users" => $users
-        ]);
-    }
-
     public static function getById($id) {
         $user = User::getById($id);
 

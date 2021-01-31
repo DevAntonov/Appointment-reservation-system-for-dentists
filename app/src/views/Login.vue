@@ -80,6 +80,7 @@ export default {
           console.log(response.data);
           const { token } = response.data;
           document.cookie = `_token=${token}`;
+          this.$router.push({ path: '/patient/dashboard' });
         }, (error) => {
           // eslint-disable-next-line
           console.error(error);
